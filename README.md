@@ -23,4 +23,10 @@
 
 ![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233708.jpg)
 
+![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%201.jpg)
+
+![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%202.jpg)
+
+![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%203.jpg)
+
 
