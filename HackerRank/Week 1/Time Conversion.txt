@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the 'timeConversion' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+string timeConversion(string time12) {
+    string hoursStr = time12.substr(0, 2);
+    string rest = time12.substr(2, 6); 
+    string suffix = time12.substr(8, 2);
+
+    int hours = stoi(hoursStr);
+
+    if (suffix == "AM") {
+        if (hours == 12) {
+            hours = 0;
+        }
+    } else if (suffix == "PM") {
+        if (hours != 12) {
+            hours += 12;
+        }
+    }
+
+    ostringstream result;
+    result << setw(2) << setfill('0') << hours << rest;
+
+    return result.str();
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = timeConversion(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
