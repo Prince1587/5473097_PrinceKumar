@@ -29,4 +29,8 @@
 
 ![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%203.jpg)
 
+## 💻 C Programming Section
+
+![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn/Introduction%20to%20C.jpg)
+
 
