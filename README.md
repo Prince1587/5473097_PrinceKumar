@@ -10,7 +10,7 @@
 
 ## 💻 C Programming Section
 
-![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn/Introduction%20to%20C.jpg)
+![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn%20(C%20Language)/Introduction%20to%20C.jpg)
 
-![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn/C%20Intermediate.jpg)
+![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn%20(C%20Language)/C%20Intermediate.jpg)
 
