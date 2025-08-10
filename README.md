@@ -8,27 +8,6 @@
 
 ![Git](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Git/5473097_Prince.jpg)
 
-## 🐧 Linux Section
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233410.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233448.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233516.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233552.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233616.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233641.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/Screenshot%202025-07-29%20233708.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%201.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%202.jpg)
-
-![Linux](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Linux/SS%203.jpg)
-
 ## 💻 C Programming Section
 
 ![C](https://github.com/Prince1587/5473097_PrinceKumar/blob/master/Sololearn/Introduction%20to%20C.jpg)
