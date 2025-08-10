@@ -1,0 +1,35 @@
+//This task was assigned during the session on 04 August
+
+#include <stdio.h>
+
+int main() {
+    int dayNumber;
+
+    while (1) {
+        printf("Enter any day between (1 to 7) or 0 to exit: ");
+        scanf("%d", &dayNumber);
+
+        if (dayNumber == 0) {
+            printf("Exiting program. Goodbye!\n");
+            break;
+        }
+
+        if (dayNumber >= 1 && dayNumber <= 7) {
+            switch (dayNumber) {
+                case 1: printf("Monday.\n"); break;
+                case 2: printf("Tuesday.\n"); break;
+                case 3: printf("Wednesday.\n"); break;
+                case 4: printf("Thursday.\n"); break;
+                case 5: printf("Friday.\n"); break;
+                case 6: printf("Saturday.\n"); break;
+                case 7: printf("Sunday.\n"); break;
+            }
+            break; // Exit after showing the day
+        } 
+        else {
+            printf("Invalid input! Please enter a number between 1 and 7.\n");
+        }
+    }
+
+    return 0;
+}
