@@ -1,0 +1,158 @@
+#include <assert.h>
+#include <ctype.h>
+#include <limits.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* readline();
+
+/*
+ * Complete the 'isValid' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+/*
+ * To return the string from the function, you should either do static allocation or dynamic allocation
+ *
+ * For example,
+ * char* return_string_using_static_allocation() {
+ *     static char s[] = "static allocation of string";
+ *
+ *     return s;
+ * }
+ *
+ * char* return_string_using_dynamic_allocation() {
+ *     char* s = malloc(100 * sizeof(char));
+ *
+ *     s = "dynamic allocation of string";
+ *
+ *     return s;
+ * }
+ *
+ */
+char* isValid(char* s) {
+    static char yes[] = "YES";
+    static char no[]  = "NO";
+
+    int freq[26] = {0};
+
+    // Step 1: count frequencies
+    for (int i = 0; s[i] != '\0'; i++) {
+        freq[s[i] - 'a']++;
+    }
+
+    // Step 2: collect non-zero frequencies
+    int counts[1000], n = 0;
+    for (int i = 0; i < 26; i++) {
+        if (freq[i] > 0) counts[n++] = freq[i];
+    }
+
+    // Step 3: find most common frequency (mode)
+    int base = counts[0];
+    int baseCount = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (counts[i] == base) {
+            baseCount++;
+        }
+    }
+
+    // Try two possibilities: base = minFreq or base = maxFreq
+    int minFreq = counts[0], maxFreq = counts[0];
+    for (int i = 1; i < n; i++) {
+        if (counts[i] < minFreq) minFreq = counts[i];
+        if (counts[i] > maxFreq) maxFreq = counts[i];
+    }
+
+    // Case 1: all equal
+    if (minFreq == maxFreq) return yes;
+
+    // Case 2: One char is off by 1 and only occurs once
+    int minCount = 0, maxCount = 0;
+    for (int i = 0; i < n; i++) {
+        if (counts[i] == minFreq) minCount++;
+        if (counts[i] == maxFreq) maxCount++;
+    }
+
+    // Remove one occurrence of the "odd" character
+    if (minFreq == 1 && minCount == 1 && maxFreq == minFreq + 1) return yes;  // e.g., "aabbc"
+    if (minFreq == 1 && minCount == 1 && maxCount + minCount == n) return yes; // one single letter is '1'
+    if (maxFreq - minFreq == 1 && maxCount == 1) return yes; // one higher by 1
+
+    return no;
+}
+
+
+int main()
+{
+    FILE* fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+    char* s = readline();
+
+    char* result = isValid(s);
+
+    fprintf(fptr, "%s\n", result);
+
+    fclose(fptr);
+
+    return 0;
+}
+
+char* readline() {
+    size_t alloc_length = 1024;
+    size_t data_length = 0;
+
+    char* data = malloc(alloc_length);
+
+    while (true) {
+        char* cursor = data + data_length;
+        char* line = fgets(cursor, alloc_length - data_length, stdin);
+
+        if (!line) {
+            break;
+        }
+
+        data_length += strlen(cursor);
+
+        if (data_length < alloc_length - 1 || data[data_length - 1] == '\n') {
+            break;
+        }
+
+        alloc_length <<= 1;
+
+        data = realloc(data, alloc_length);
+
+        if (!data) {
+            data = '\0';
+
+            break;
+        }
+    }
+
+    if (data[data_length - 1] == '\n') {
+        data[data_length - 1] = '\0';
+
+        data = realloc(data, data_length);
+
+        if (!data) {
+            data = '\0';
+        }
+    } else {
+        data = realloc(data, data_length + 1);
+
+        if (!data) {
+            data = '\0';
+        } else {
+            data[data_length] = '\0';
+        }
+    }
+
+    return data;
+}
