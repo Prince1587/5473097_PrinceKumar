@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXN 100000
+#define MOD 100003  // simple hash size for deletes
+
+// ----------------- Min Heap Implementation -----------------
+int heap[MAXN+5];
+int heapSize = 0;
+
+// swap helper
+void swap(int* a, int* b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+// push into heap
+void heap_push(int val) {
+    heap[++heapSize] = val;
+    int i = heapSize;
+    while (i > 1 && heap[i] < heap[i/2]) {
+        swap(&heap[i], &heap[i/2]);
+        i /= 2;
+    }
+}
+
+// heapify down
+void heapify(int i) {
+    int smallest = i;
+    int left = 2*i;
+    int right = 2*i + 1;
+
+    if (left <= heapSize && heap[left] < heap[smallest]) smallest = left;
+    if (right <= heapSize && heap[right] < heap[smallest]) smallest = right;
+
+    if (smallest != i) {
+        swap(&heap[i], &heap[smallest]);
+        heapify(smallest);
+    }
+}
+
+// pop min
+int heap_pop() {
+    if (heapSize == 0) return -1;
+    int root = heap[1];
+    heap[1] = heap[heapSize--];
+    heapify(1);
+    return root;
+}
+
+// get min
+int heap_min() {
+    if (heapSize == 0) return -1;
+    return heap[1];
+}
+
+// ----------------- Delete Support (Hash Set) -----------------
+// We lazily delete: mark elements in hash when "delete v" seen
+// and skip them when they appear at heap top.
+
+typedef struct Node {
+    int key;
+    struct Node* next;
+} Node;
+
+Node* hashTable[MOD];
+
+int hash(int x) {
+    if (x < 0) x = -x;
+    return x % MOD;
+}
+
+void addToHash(int x) {
+    int h = hash(x);
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->key = x;
+    newNode->next = hashTable[h];
+    hashTable[h] = newNode;
+}
+
+int existsInHash(int x) {
+    int h = hash(x);
+    Node* cur = hashTable[h];
+    while (cur) {
+        if (cur->key == x) return 1;
+        cur = cur->next;
+    }
+    return 0;
+}
+
+void removeMinLazy() {
+    while (heapSize > 0 && existsInHash(heap_min())) {
+        int x = heap_pop(); // remove from heap
+        // do nothing to hash (we ignore once matched)
+    }
+}
+
+// ----------------- Main Logic -----------------
+int main() {
+    int Q;
+    scanf("%d", &Q);
+
+    while (Q--) {
+        int type, val;
+        scanf("%d", &type);
+
+        if (type == 1) {
+            scanf("%d", &val);
+            heap_push(val);
+        } else if (type == 2) {
+            scanf("%d", &val);
+            addToHash(val); // mark for deletion
+        } else if (type == 3) {
+            removeMinLazy();
+            printf("%d\n", heap_min());
+        }
+    }
+    return 0;
+}
